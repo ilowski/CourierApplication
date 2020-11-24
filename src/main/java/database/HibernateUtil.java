@@ -13,7 +13,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
      private HibernateUtil() {
         sessionFactory = buildSessionFactory();
      }
-
+ /*  singleton */
      public static HibernateUtil getInstance() {
          if (instance == null) {
              instance = new HibernateUtil();
