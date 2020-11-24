@@ -1,3 +1,6 @@
+package service;
+
+import database.LangRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,7 +22,7 @@ public class HelloService {
 
 
 
-    String prepareGreeting(String name, String lang)  {
+    public String prepareGreeting(String name, String lang)  {
         Integer langId;
         try {
 

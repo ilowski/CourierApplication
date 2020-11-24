@@ -1,3 +1,5 @@
+package entity;
+
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
@@ -6,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name = "languages")
+public
 class Lang {
     @Id
     @GeneratedValue(generator="inc")

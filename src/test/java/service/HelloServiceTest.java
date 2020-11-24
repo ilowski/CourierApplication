@@ -1,5 +1,8 @@
+package service;
+
 import org.junit.Assert;
 import org.junit.Test;
+import service.HelloService;
 
 
 public class HelloServiceTest {
@@ -29,7 +32,7 @@ public class HelloServiceTest {
         String result = helloService.prepareGreeting(name,language);
 
         //excepted
-        Assert.assertEquals("Witaj " + name, result);
+        Assert.assertEquals("Witam " + name, result);
 
     }
     @Test

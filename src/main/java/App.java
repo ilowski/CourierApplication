@@ -1,3 +1,5 @@
+
+import database.HibernateUtil;
 import org.eclipse.jetty.annotations.AnnotationConfiguration;
 import org.eclipse.jetty.plus.webapp.EnvConfiguration;
 import org.eclipse.jetty.plus.webapp.PlusConfiguration;
@@ -6,10 +8,12 @@ import org.eclipse.jetty.util.component.AbstractLifeCycle;
 import org.eclipse.jetty.util.component.LifeCycle;
 import org.eclipse.jetty.webapp.*;
 
+
 public class App {
 
     public static void main (String[] args)  throws Exception {
       Server server = new Server(8080);
+      HibernateUtil hibernateUtil = HibernateUtil.getInstance();
         WebAppContext webapp = new WebAppContext();
         webapp.setResourceBase("src/main/webapp");
         webapp.setContextPath("/");
@@ -32,7 +36,7 @@ public class App {
       server.addLifeCycleListener(new AbstractLifeCycle.AbstractLifeCycleListener() {
           @Override
           public void lifeCycleStopped(LifeCycle event) {
-              HibernateUtil.close();
+              hibernateUtil.close();
           }
       });
       server.start();

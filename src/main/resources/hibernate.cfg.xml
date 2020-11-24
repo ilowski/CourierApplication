@@ -33,7 +33,7 @@
         <property name="hbm2ddl.auto">validate</property>
 
         <!-- Names the annotated entity class -->
-        <mapping class="Lang"/>
+        <mapping class="entity.Lang"/>
 
     </session-factory>
 
