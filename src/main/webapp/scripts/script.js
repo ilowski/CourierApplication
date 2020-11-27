@@ -9,13 +9,13 @@ const API_URL = 'http://localhost:8080/api';
     .then(response => response.json())
     .then((languages) => {
     const checkboxes = languages.map(l => `
-    <div class="form-group">
-    <label class="pure-radio">
+ 
+    <label class="pure-radio" style="margin: 10px;">
       <input type="radio" name="lang" value="${l.id}">
       <img src="../images/${CODE_TO_EMOJI[l.codeLanguage]}"</img>
     </label>
-    </div>
-    `).join('\n');
+
+    `).join('');
     document.getElementById('langs').innerHTML = checkboxes;
     });
     const div = document.getElementById('welcome');
