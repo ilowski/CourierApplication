@@ -16,6 +16,7 @@ const API_URL = 'http://localhost:8080/api';
     </label>
 
     `).join('');
+    
     document.getElementById('langs').innerHTML = checkboxes;
     });
     const div = document.getElementById('welcome');
