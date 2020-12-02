@@ -31,7 +31,7 @@ public class LangServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        logger.info("reques got");
+        logger.info("Request got");
         resp.setContentType("application/json;charset=UTF-8");
         objectMapper.writeValue(resp.getOutputStream(), langRepository.findAll());
 
