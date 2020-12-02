@@ -34,7 +34,7 @@
 
         <!-- Names the annotated entity class -->
         <mapping class="entity.Lang"/>
-
+        <mapping class="entity.Tip"/>
     </session-factory>
 
 </hibernate-configuration>
