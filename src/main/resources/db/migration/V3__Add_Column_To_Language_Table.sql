@@ -1,0 +1,2 @@
+ALTER TABLE languages
+ADD tipText VARCHAR(150);
