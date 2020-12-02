@@ -34,7 +34,9 @@ public class HelloService {
         }
         String welcomeMessage = Optional.ofNullable(langRepository.findById(langId)).orElse(langRepository.findById(FALLBACK_LANG_ID)).getWelcomeMessage();
         String nameToWelcomeMessage = Optional.ofNullable(name).orElse(FALLBACK_NAME);
-        return welcomeMessage + " " + nameToWelcomeMessage;
+        String tipText = Optional.ofNullable(langRepository.findById(langId)).orElse(langRepository.findById(FALLBACK_LANG_ID)).getTipMessage();
+
+        return welcomeMessage + " " + nameToWelcomeMessage + ". " + tipText ;
     }
 }
 
