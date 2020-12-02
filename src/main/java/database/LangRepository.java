@@ -21,7 +21,7 @@ public class LangRepository {
     }
 
     public List<Lang> findAll() {
-            Session session = HibernateUtil.getSessionFactory().openSession();
+            Session session = hibernateUtil.getSessionFactory().openSession();
             Transaction transaction = session.beginTransaction();
             List<Lang> result = session.createQuery("from Lang", Lang.class).list();
             transaction.commit();
