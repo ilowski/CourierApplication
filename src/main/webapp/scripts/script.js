@@ -1,9 +1,11 @@
 const API_URL = 'http://localhost:8080/api';
+const TIPS_API_URL = `${API_URL}/tips`;
     const CODE_TO_EMOJI = {
     'en': 'england.png',
     'pl': 'poland.png',
     'de': 'german.png'
     };
+
 
     fetch(`${API_URL}/langs`)
     .then(response => response.json())
@@ -36,5 +38,8 @@ const API_URL = 'http://localhost:8080/api';
        <h1>${text}</h1>
        </div>
        `;
+       form.remove();
+       document.getElementById('tipForm').style.display = 'block';
        });
+     
 });
