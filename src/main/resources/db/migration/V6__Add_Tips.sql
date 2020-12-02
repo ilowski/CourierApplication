@@ -1,0 +1,1 @@
+insert into tips (nickName, value) values ('firstOne',52.0);
