@@ -18,7 +18,7 @@ public class HelloServiceTest {
         String result = helloService.prepareGreeting(name,language);
 
         //excepted
-        Assert.assertEquals("Hello " + name, result);
+        Assert.assertEquals("Hello " + name +". Maybe you want give me a virtual tip?", result);
 
     }
     @Test
@@ -32,7 +32,7 @@ public class HelloServiceTest {
         String result = helloService.prepareGreeting(name,language);
 
         //excepted
-        Assert.assertEquals("Witam " + name, result);
+        Assert.assertEquals("Witam " + name + ". Może chcesz mi dać wirtualny napiwek?", result);
 
     }
     @Test
@@ -46,7 +46,7 @@ public class HelloServiceTest {
         String result = helloService.prepareGreeting(name,language);
 
         //excepted
-        Assert.assertEquals("Hello " + helloService.FALLBACK_NAME, result);
+        Assert.assertEquals("Hello " + helloService.FALLBACK_NAME +". Maybe you want give me a virtual tip?", result);
 
     }
 
@@ -61,7 +61,7 @@ public class HelloServiceTest {
         String result = helloService.prepareGreeting(name,language);
 
         //excepted
-        Assert.assertEquals("Hello " + name, result);
+        Assert.assertEquals("Hello " + name +". Maybe you want give me a virtual tip?", result);
 
     }
 
@@ -76,7 +76,7 @@ public class HelloServiceTest {
         String result = helloService.prepareGreeting(name,language);
 
         //excepted
-        Assert.assertEquals("Hello " + helloService.FALLBACK_NAME, result);
+        Assert.assertEquals("Hello " + helloService.FALLBACK_NAME + ". Maybe you want give me a virtual tip?", result);
 
     }
 }
