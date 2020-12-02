@@ -16,18 +16,21 @@ class Lang {
     private Integer id;
     private String welcomeMessage;
     private String codeLanguage;
+    private String tipText;
 
     //constructor for Hibernate use
     @SuppressWarnings("unused")
     Lang() {
     }
 
-    public Lang(Integer id, String welcomeMessage, String codeLanguage) {
+    public Lang(Integer id, String welcomeMessage, String codeLanguage, String tipText) {
         this.id = id;
         this.welcomeMessage = welcomeMessage;
         this.codeLanguage = codeLanguage;
+        this.tipText = tipText;
     }
 
+    public String getTipMessage() { return tipText;}
     public Integer getId() {
         return id;
     }
