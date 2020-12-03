@@ -29,4 +29,16 @@ public class TipRepository {
         return result;
     }
 
+    public Tip addTip(Tip newTip) {
+
+        Session session = hibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        session.persist(newTip);
+        Tip tip = session.get(Tip.class,newTip.getId());
+        transaction.commit();
+        session.close();
+        return tip;
+
+    }
+
 }
