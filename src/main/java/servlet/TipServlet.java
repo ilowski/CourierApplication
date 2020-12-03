@@ -3,6 +3,7 @@ package servlet;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import database.LangRepository;
 import database.TipRepository;
+import entity.Tip;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -37,6 +38,13 @@ public class TipServlet extends HttpServlet  {
 
     }
 
-    protected void doPut()
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    }
 
+     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("application/json;charset=UTF-8");
+        Tip tip = tipRepository.addTip(objectMapper.readValue(req.getInputStream(), Tip.class));
+        objectMapper.writeValue(resp.getOutputStream(), tip);
+
+    }
 }
