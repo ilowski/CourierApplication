@@ -11,6 +11,10 @@ nav ul li a:hover {
  color: #683aa4;
 }
 
+#tipText {
+  margin-top:5px;
+  margin-bottom: 5px;
+}
 nav {
 width: 100%;
 display: block;}
