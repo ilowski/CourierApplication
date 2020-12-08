@@ -14,16 +14,16 @@ public class Tip {
     @GeneratedValue(generator="inc")
     @GenericGenerator(name="inc", strategy = "increment")
     private Integer id;
-    private String nickName;
+    private String tipMessage;
     private Float value;
 
     Tip() {
 
     }
 
-    public Tip (Integer id, String nickName, Float value) {
+    public Tip (Integer id, String tipMessage, Float value) {
         this.id = id;
-        this.nickName = nickName;
+        this.tipMessage = tipMessage;
         this.value = value;
     }
 
@@ -32,12 +32,12 @@ public class Tip {
     }
 
 
-    public String getNickName() {
-        return nickName;
+    public String getTipMessage() {
+        return tipMessage;
     }
 
-    public void setNickName(String nickName) {
-        this.nickName = nickName;
+    public void setTipMessage(String tipMessage) {
+        this.tipMessage = tipMessage;
     }
 
     public Float getValue() {
