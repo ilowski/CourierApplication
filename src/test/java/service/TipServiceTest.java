@@ -8,29 +8,29 @@ import org.junit.Test;
 public class TipServiceTest {
     private TipService tipService;
     @Test
-    public void TipWithNameAndValueTest(){
+    public void TipWithTipMessageAndValueTest(){
         //is
         tipService = new TipService();
-        String nickName = "Kozak";
+        String tipMessage = "superkozak";
         Float value = 50.0f;
         //then
-        String result = tipService.prepareTipMessage(nickName, value);
+        String result = tipService.prepareTipMessage(tipMessage, value);
 
         //excepted
-        Assert.assertEquals(nickName + " thank you for " + value + "$ tip!", result);
+        Assert.assertEquals(value +"$ tip: " + tipMessage, result);
 
     }
 @Test
-    public void TipNameIsNullTest(){
+    public void TipMessageIsNullTest(){
         //is
         tipService = new TipService();
-        String nickName = null;
+        String tipMessage = null;
         Float value = 50.0f;
         //then
-        String result = tipService.prepareTipMessage(nickName, value);
+        String result = tipService.prepareTipMessage(tipMessage, value);
 
         //excepted
-        Assert.assertEquals( "Unnamed thank you for " + value + "$ tip!", result);
+        Assert.assertEquals( value +"$ tip: Thank you for it!" , result);
 
     }
 
@@ -38,28 +38,28 @@ public class TipServiceTest {
     public void TipValueIsNullTest(){
         //is
         tipService = new TipService();
-        String nickName = "kozak";
+        String tipMessage = "nice streams";
         Float value = null;
         //then
-        String result = tipService.prepareTipMessage(nickName, value);
+        String result = tipService.prepareTipMessage(tipMessage, value);
 
         //excepted
-        Assert.assertEquals( nickName + " thank you for " + "0.0$ tip!", result);
+        Assert.assertEquals( "0.0$ tip: " + tipMessage, result);
 
     }
 
 
     @Test
-    public void TipValueIsNullNickNameIsNullTest(){
+    public void TipValueAndTipMessageAreNullTest(){
         //is
         tipService = new TipService();
-        String nickName = null;
+        String tipMessage = null;
         Float value = null;
         //then
-        String result = tipService.prepareTipMessage(nickName, value);
+        String result = tipService.prepareTipMessage(tipMessage, value);
 
         //excepted
-        Assert.assertEquals(  "Unnamed thank you for " + "0.0$ tip!", result);
+        Assert.assertEquals(   "0.0$ tip: Thank you for it!" , result);
 
     }
 
@@ -67,10 +67,10 @@ public class TipServiceTest {
     public void TipValueNegativeTest(){
         //is
         tipService = new TipService();
-        String nickName = null;
+        String tipMessage = null;
         Float value = -5f;
         //then
-        String result = tipService.prepareTipMessage(nickName, value);
+        String result = tipService.prepareTipMessage(tipMessage, value);
 
         //excepted
         Assert.assertEquals("You can't give me negative tip", result);
