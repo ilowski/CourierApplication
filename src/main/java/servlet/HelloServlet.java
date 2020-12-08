@@ -31,7 +31,7 @@ public class HelloServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        logger.info("reques got by " + req.getParameter(NAME_PARAM));
+        logger.info("request got by " + req.getParameter(NAME_PARAM));
         String name = req.getParameter(NAME_PARAM);
         String lang = req.getParameter(LANG_PARAM);
         resp.getWriter().write(helloService.prepareGreeting(name, lang));
