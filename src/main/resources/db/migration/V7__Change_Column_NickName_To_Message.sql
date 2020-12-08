@@ -1,0 +1,1 @@
+ALTER TABLE tips CHANGE nickName tipMessage char(150);
