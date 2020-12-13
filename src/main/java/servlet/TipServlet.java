@@ -37,8 +37,10 @@ public class TipServlet extends HttpServlet  {
 
             logger.info("Request got on TipServlet");
             resp.setContentType("application/json;charset=UTF-8");
-            objectMapper.writeValue(resp.getOutputStream(), tipService.summaryOfTips());
-    
+            resp.getWriter().write(tipService.prepareSummaryTipMessage());
+
+
+
 
     }
 
