@@ -31,6 +31,13 @@ public class TipServlet extends HttpServlet  {
         this.objectMapper = objectMapper;
         this.tipService = tipService;
     }
+    @Override
+    public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("application/json;charset=UTF-8");
+        Tip tip = tipRepository.addTip(objectMapper.readValue(req.getInputStream(), Tip.class));
+        doGet(req,resp);
+
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -47,10 +54,5 @@ public class TipServlet extends HttpServlet  {
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     }
 
-     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("application/json;charset=UTF-8");
-        Tip tip = tipRepository.addTip(objectMapper.readValue(req.getInputStream(), Tip.class));
-        objectMapper.writeValue(resp.getOutputStream(), tip);
 
-    }
 }
