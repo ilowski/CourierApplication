@@ -52,7 +52,7 @@
         <div  id="welcome" style="text-align:center;">
         </div>
 
-        <form id="welcomeForm" style="">
+        <form id="welcomeForm">
 
             <input type="text" name="name" class="form-control" placeholder="name"/>
             <div class="text-center">
@@ -63,11 +63,14 @@
         </form>
 
 
-        <form id="tipForm" style="display: none; text-align: center">
+        <form id="tipForm" style="display: none; text-align: center" method="POST">
             <input type="text" id="tipMessageText" class="form-control" placeholder="Enter your message">
             <input type="text" id="tipText" class="form-control" placeholder="Enter your tip">
-            <button id="addTip" class="btn btn-primary btn-lg">Add Tip</button>
+            <button id="addTip" type="submit" class="btn btn-primary btn-lg">Add Tip</button>
+            
         </form>
+        <fieldset id="currentTip"></fieldset>
+     <fieldset id="allTips"></fieldset>
     </div>
 </div>
 
