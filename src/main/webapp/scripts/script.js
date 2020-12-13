@@ -18,21 +18,16 @@ const LANGS_API_URL = `${API_URL}/langs`;
         },
         body: JSON.stringify({tipMessage: tipMessageText.value, value: tipText.value})
       })
-      .then(updateTip());
-        
-    });
-
-
-  
-    function updateTip() {
-    fetch(TIPS_API_URL, {
-     method: 'GET'})
-    .then(response => response.text())
+      .then(response => response.text())
     .then((text) => {
       document.getElementById("allTips").innerHTML = ` 
       <h2>${text}</h2>
       `;
-    })}
+    });
+        
+    });
+
+
 
 
 
