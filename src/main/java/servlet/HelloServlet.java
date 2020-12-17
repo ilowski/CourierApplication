@@ -30,7 +30,7 @@ public class HelloServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+        resp.setContentType("application/json;charset=UTF-8");
         logger.info("request got by " + req.getParameter(NAME_PARAM));
         String name = req.getParameter(NAME_PARAM);
         String lang = req.getParameter(LANG_PARAM);
