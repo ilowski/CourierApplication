@@ -21,26 +21,32 @@ public class TipServlet extends HttpServlet  {
     private TipRepository tipRepository;
     private ObjectMapper objectMapper;
     private TipService tipService;
+    private TipValidator tipValidator;
     private final Logger logger = LoggerFactory.getLogger(TipServlet.class);
     @SuppressWarnings("unused")
     public TipServlet() {
-        this(new TipRepository(), new ObjectMapper(), new TipService());
+        this(new TipRepository(), new ObjectMapper(), new TipService(), new TipValidator());
     }
 
-    public TipServlet(TipRepository tipRepository, ObjectMapper objectMapper, TipService tipService) {
+    public TipServlet(TipRepository tipRepository, ObjectMapper objectMapper, TipService tipService, TipValidator tipValidator) {
         this.tipRepository = tipRepository;
         this.objectMapper = objectMapper;
         this.tipService = tipService;
+        this.tipValidator = tipValidator;
     }
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json;charset=UTF-8");
         Tip tip = objectMapper.readValue(req.getInputStream(), Tip.class);
-        if(tip.getValue() < 0) {
-            tip.setValue(0f);
+        if(tipValidator.valueValidator(tip.getValue())) {
+            tipRepository.addTip(tip);
+            doGet(req,resp); }
+        else {
+            logger.info("Request got on TipServlet");
+            resp.setContentType("application/json;charset=UTF-8");
+            resp.getWriter().write("GIVE MORE THAN 0!");
         }
-        tipRepository.addTip(tip);
-        doGet(req,resp);
+
 
     }
 
