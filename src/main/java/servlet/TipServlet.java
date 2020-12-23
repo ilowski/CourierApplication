@@ -38,13 +38,14 @@ public class TipServlet extends HttpServlet  {
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json;charset=UTF-8");
         Tip tip = objectMapper.readValue(req.getInputStream(), Tip.class);
-        if(tipValidator.valueValidator(tip.getValue())) {
+        if(tipValidator.isValidate(tip.getValue(), tip.getTipMessage())) {
             tipRepository.addTip(tip);
             doGet(req,resp); }
         else {
             logger.info("Request got on TipServlet");
             resp.setContentType("application/json;charset=UTF-8");
-            resp.getWriter().write("GIVE MORE THAN 0!");
+            resp.getWriter().write("GIVE MORE THAN 0 AND ADD YOUR MESSAGE" +
+                    "!");
         }
 
 
