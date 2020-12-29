@@ -18,13 +18,14 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@WebServlet(name = "Tip", urlPatterns={"/api/tips"})
-public class TipServlet extends HttpServlet  {
+@WebServlet(name = "Tip", urlPatterns = {"/api/tips"})
+public class TipServlet extends HttpServlet {
     private TipRepository tipRepository;
     private ObjectMapper objectMapper;
     private TipService tipService;
     private TipValidator tipValidator;
     private final Logger logger = LoggerFactory.getLogger(TipServlet.class);
+
     @SuppressWarnings("unused")
     public TipServlet() {
         this(new TipRepository(), new ObjectMapper(), new TipService(), new TipValidator());
@@ -36,6 +37,7 @@ public class TipServlet extends HttpServlet  {
         this.tipService = tipService;
         this.tipValidator = tipValidator;
     }
+
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -43,24 +45,20 @@ public class TipServlet extends HttpServlet  {
 
         try {
             Tip tip = objectMapper.readValue(req.getInputStream(), Tip.class);
-            if(tipValidator.isValidate(tip.getValue(), tip.getTipMessage())) {
+            if (tipValidator.isValidate(tip.getValue(), tip.getTipMessage())) {
                 tipRepository.addTip(tip);
-                doGet(req,resp); }
-            else {
+                doGet(req, resp);
+            } else {
                 logger.info("Wrong value of tip");
                 resp.setContentType("application/json;charset=UTF-8");
-                resp.getWriter().write("GIVE MORE THAN 0 AND ADD YOUR MESSAGE" +
-                        "!");
+                resp.getWriter().write("GIVE MORE THAN 0 AND ADD YOUR MESSAGE" + "!");
             }
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             logger.info("Wrong format of tip");
             resp.setContentType("application/json;charset=UTF-8");
             resp.getWriter().write("GIVE CORRECT TIP" +
                     "!");
         }
-
-
 
 
     }
@@ -70,8 +68,6 @@ public class TipServlet extends HttpServlet  {
         logger.info("Request got on TipServlet");
         resp.setContentType("application/json;charset=UTF-8");
         resp.getWriter().write(tipService.prepareSummaryTipMessage());
-
-
 
 
     }
