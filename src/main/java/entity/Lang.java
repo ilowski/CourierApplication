@@ -6,12 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "languages")
 public class Lang {
     @Id
-    @GeneratedValue(generator="inc")
-    @GenericGenerator(name="inc", strategy = "increment")
+    @GeneratedValue(generator = "inc")
+    @GenericGenerator(name = "inc", strategy = "increment")
     private Integer id;
     private String welcomeMessage;
     private String codeLanguage;
@@ -29,7 +30,10 @@ public class Lang {
         this.tipText = tipText;
     }
 
-    public String getTipMessage() { return tipText;}
+    public String getTipMessage() {
+        return tipText;
+    }
+
     public Integer getId() {
         return id;
     }

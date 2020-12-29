@@ -5,21 +5,22 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
- public class HibernateUtil {
+public class HibernateUtil {
 
     private static SessionFactory sessionFactory = null;
     private static HibernateUtil instance = null;
 
-     private HibernateUtil() {
+    private HibernateUtil() {
         sessionFactory = buildSessionFactory();
-     }
- /*  singleton */
-     public static HibernateUtil getInstance() {
-         if (instance == null) {
-             instance = new HibernateUtil();
-         }
-         return instance;
-     }
+    }
+
+    /*  singleton */
+    public static HibernateUtil getInstance() {
+        if (instance == null) {
+            instance = new HibernateUtil();
+        }
+        return instance;
+    }
 
     private static SessionFactory buildSessionFactory() {
         // A SessionFactory is set up once for an application!

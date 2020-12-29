@@ -25,9 +25,10 @@ public class LangServlet extends HttpServlet {
     }
 
     public LangServlet(LangRepository langRepository, ObjectMapper objectMapper) {
-       this.langRepository = langRepository;
-       this.objectMapper = objectMapper;
+        this.langRepository = langRepository;
+        this.objectMapper = objectMapper;
     }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 

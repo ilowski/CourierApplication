@@ -11,21 +11,21 @@ public class LangRepository {
     HibernateUtil hibernateUtil = HibernateUtil.getInstance();
 
 
-    public Lang findById(Integer id){
+    public Lang findById(Integer id) {
         Session session = hibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        Lang result = session.get(Lang.class,id);
+        Lang result = session.get(Lang.class, id);
         transaction.commit();
         session.close();
         return result;
     }
 
     public List<Lang> findAll() {
-            Session session = hibernateUtil.getSessionFactory().openSession();
-            Transaction transaction = session.beginTransaction();
-            List<Lang> result = session.createQuery("from Lang", Lang.class).list();
-            transaction.commit();
-            session.close();
-            return result;
+        Session session = hibernateUtil.getSessionFactory().openSession();
+        Transaction transaction = session.beginTransaction();
+        List<Lang> result = session.createQuery("from Lang", Lang.class).list();
+        transaction.commit();
+        session.close();
+        return result;
     }
 }

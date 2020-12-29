@@ -26,8 +26,9 @@ public class HelloServlet extends HttpServlet {
     }
 
     public HelloServlet(HelloService helloService) {
-       this.helloService = helloService;
+        this.helloService = helloService;
     }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json;charset=UTF-8");

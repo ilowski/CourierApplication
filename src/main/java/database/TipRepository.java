@@ -14,7 +14,7 @@ public class TipRepository {
     public Tip findByNickName(String nickName) {
         Session session = hibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        Tip result = session.get(Tip.class,nickName);
+        Tip result = session.get(Tip.class, nickName);
         transaction.commit();
         session.close();
         return result;
@@ -34,7 +34,7 @@ public class TipRepository {
         Session session = hibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
         session.persist(newTip);
-        Tip tip = session.get(Tip.class,newTip.getId());
+        Tip tip = session.get(Tip.class, newTip.getId());
         transaction.commit();
         session.close();
         return tip;
