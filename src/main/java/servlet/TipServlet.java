@@ -47,6 +47,7 @@ public class TipServlet extends HttpServlet {
             Tip tip = objectMapper.readValue(req.getInputStream(), Tip.class);
             if (tipValidator.isValidate(tip.getValue(), tip.getTipMessage())) {
                 tipRepository.addTip(tip);
+                logger.info("Tip added to database!");
                 doGet(req, resp);
             } else {
                 logger.info("Wrong value of tip");
