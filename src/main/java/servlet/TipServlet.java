@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @WebServlet(name = "Tip", urlPatterns={"/api/tips"})
 public class TipServlet extends HttpServlet  {
@@ -36,27 +38,38 @@ public class TipServlet extends HttpServlet  {
     }
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         resp.setContentType("application/json;charset=UTF-8");
-        Tip tip = objectMapper.readValue(req.getInputStream(), Tip.class);
-        if(tipValidator.isValidate(tip.getValue(), tip.getTipMessage())) {
-            tipRepository.addTip(tip);
-            doGet(req,resp); }
-        else {
-            logger.info("Request got on TipServlet");
+
+        try {
+            Tip tip = objectMapper.readValue(req.getInputStream(), Tip.class);
+            if(tipValidator.isValidate(tip.getValue(), tip.getTipMessage())) {
+                tipRepository.addTip(tip);
+                doGet(req,resp); }
+            else {
+                logger.info("Wrong value of tip");
+                resp.setContentType("application/json;charset=UTF-8");
+                resp.getWriter().write("GIVE MORE THAN 0 AND ADD YOUR MESSAGE" +
+                        "!");
+            }
+        }
+        catch (Exception e) {
+            logger.info("Wrong format of tip");
             resp.setContentType("application/json;charset=UTF-8");
-            resp.getWriter().write("GIVE MORE THAN 0 AND ADD YOUR MESSAGE" +
+            resp.getWriter().write("GIVE CORRECT TIP" +
                     "!");
         }
+
+
 
 
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-            logger.info("Request got on TipServlet");
-            resp.setContentType("application/json;charset=UTF-8");
-            resp.getWriter().write(tipService.prepareSummaryTipMessage());
+        logger.info("Request got on TipServlet");
+        resp.setContentType("application/json;charset=UTF-8");
+        resp.getWriter().write(tipService.prepareSummaryTipMessage());
 
 
 
