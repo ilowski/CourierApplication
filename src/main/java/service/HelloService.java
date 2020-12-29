@@ -12,23 +12,22 @@ public class HelloService {
     private LangRepository langRepository;
 
     Logger logger = LoggerFactory.getLogger(HelloService.class);
+
     public HelloService() {
         this(new LangRepository());
     }
 
-   public HelloService(LangRepository langRepository) {
+    public HelloService(LangRepository langRepository) {
         this.langRepository = langRepository;
     }
 
 
-
-    public String prepareGreeting(String name, String lang)  {
+    public String prepareGreeting(String name, String lang) {
         Integer langId;
         try {
 
-             langId = Optional.ofNullable(lang).map(Integer::valueOf).orElse(FALLBACK_LANG_ID);
-        }
-        catch (NumberFormatException e) {
+            langId = Optional.ofNullable(lang).map(Integer::valueOf).orElse(FALLBACK_LANG_ID);
+        } catch (NumberFormatException e) {
             logger.warn("Non-numeric format of lang");
             langId = FALLBACK_LANG_ID;
         }
@@ -36,7 +35,7 @@ public class HelloService {
         String nameToWelcomeMessage = Optional.ofNullable(name).orElse(FALLBACK_NAME);
         String tipText = Optional.ofNullable(langRepository.findById(langId)).orElse(langRepository.findById(FALLBACK_LANG_ID)).getTipMessage();
 
-        return welcomeMessage + " " + nameToWelcomeMessage + ". " + tipText ;
+        return welcomeMessage + " " + nameToWelcomeMessage + ". " + tipText;
     }
 }
 

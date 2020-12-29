@@ -11,9 +11,9 @@ import org.eclipse.jetty.webapp.*;
 
 public class App {
 
-    public static void main (String[] args)  throws Exception {
-      Server server = new Server(8080);
-      HibernateUtil hibernateUtil = HibernateUtil.getInstance();
+    public static void main(String[] args) throws Exception {
+        Server server = new Server(8080);
+        HibernateUtil hibernateUtil = HibernateUtil.getInstance();
         WebAppContext webapp = new WebAppContext();
         webapp.setResourceBase("src/main/webapp");
         webapp.setContextPath("/");
@@ -29,19 +29,18 @@ public class App {
                         new JettyWebXmlConfiguration()
                 });
 
-       webapp.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern", ".*/classes/.*");
+        webapp.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern", ".*/classes/.*");
 
 
-      server.setHandler(webapp);
-      server.addLifeCycleListener(new AbstractLifeCycle.AbstractLifeCycleListener() {
-          @Override
-          public void lifeCycleStopped(LifeCycle event) {
-              hibernateUtil.close();
-          }
-      });
-      server.start();
-      server.join();
-
+        server.setHandler(webapp);
+        server.addLifeCycleListener(new AbstractLifeCycle.AbstractLifeCycleListener() {
+            @Override
+            public void lifeCycleStopped(LifeCycle event) {
+                hibernateUtil.close();
+            }
+        });
+        server.start();
+        server.join();
 
 
     }

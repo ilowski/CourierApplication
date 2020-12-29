@@ -11,8 +11,8 @@ import javax.persistence.Table;
 @Table(name = "tips")
 public class Tip {
     @Id
-    @GeneratedValue(generator="inc")
-    @GenericGenerator(name="inc", strategy = "increment")
+    @GeneratedValue(generator = "inc")
+    @GenericGenerator(name = "inc", strategy = "increment")
     private Integer id;
     private String tipMessage;
     private Float value;
@@ -21,7 +21,7 @@ public class Tip {
 
     }
 
-    public Tip (Integer id, String tipMessage, Float value) {
+    public Tip(Integer id, String tipMessage, Float value) {
         this.id = id;
         this.tipMessage = tipMessage;
         this.value = value;
