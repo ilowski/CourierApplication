@@ -48,7 +48,7 @@ public class TipService {
 
     public String prepareSummaryTipMessage() {
         String summary = summaryOfTips();
-        String summaryTipMessage = "Current balance of tips: " + summary;
+        String summaryTipMessage = "Current balance of tips: " + summary + " PLN";
         return summaryTipMessage;
     }
 }
